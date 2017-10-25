@@ -57,6 +57,16 @@ ADD_DEFINITIONS(-DTESTS_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 # Boost and add it to the test suite.
 # Complementary source files can be added as extra arguments.
 #
+
+ADD_EXECUTABLE(My_Example_1 My_Example_1.cpp)
+ TARGET_LINK_LIBRARIES(My_Example_1 roboptim-core ${Boost_LIBRARIES})
+
+ADD_EXECUTABLE(Line_test Line_test.cpp)
+ TARGET_LINK_LIBRARIES(Line_test roboptim-core ${Boost_LIBRARIES})
+
+ADD_EXECUTABLE(Hyper_plane Hyper_plane.cpp)
+ TARGET_LINK_LIBRARIES(Hyper_plane roboptim-core ${Boost_LIBRARIES})
+
 MACRO(ROBOPTIM_CORE_TEST NAME)
   ADD_EXECUTABLE(${NAME} ${NAME}.cc ${ARGN})
   ADD_TEST(NAME ${NAME}

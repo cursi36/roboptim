@@ -31,6 +31,7 @@ SET(PROJECT_DEBUG_POSTFIX "_d")
 # Use MathJax for Doxygen formulae
 SET(DOXYGEN_USE_MATHJAX "YES")
 
+
 SET(HEADERS
   ${CMAKE_SOURCE_DIR}/include/roboptim/core.hh
   ${CMAKE_SOURCE_DIR}/include/roboptim/core/alloc.hh
@@ -151,6 +152,8 @@ SET(HEADERS
   )
 
 SETUP_PROJECT()
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error")
+
 
 SET (ROBOPTIM_DO_NOT_CHECK_ALLOCATION TRUE CACHE BOOL
   "Do not check dynamic allocation of Eigen matrices")
@@ -242,9 +245,10 @@ ENDIF(NOT LTDL_FOUND)
 
 HEADER_INSTALL("${HEADERS}")
 
+
 # Set plug-in subdirectory name (can be empty).
-SET(PLUGIN_SUBDIR "${PROJECT_NAME}" CACHE
-  STRING "libdir subdirectory where plug-ins will be installed (can be empty)")
+SET(PLUGIN_SUBDIR "${PROJECT_NAME}" CACHE 
+  STRING "libdir subdirectory where plug-ins will be installed (can be empty)" )
 SET(PLUGINDIR "${CMAKE_INSTALL_LIBDIR}/${PLUGIN_SUBDIR}")
 SET(FULL_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/${PLUGIN_SUBDIR}")
 MESSAGE("-- Relative plug-in directory: ${PLUGIN_SUBDIR}")

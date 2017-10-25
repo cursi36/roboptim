@@ -232,7 +232,7 @@ int run_test (boost::shared_ptr<boost::test_tools::output_test_stream>& output)
   //  - Eigen: "eigen-levenberg-marquardt"
   //  etc.
   // The plugin is built for a given solver type, so chose it adequately.
-  SolverFactory<solver_t> factory ("dummy-td", pb);
+  SolverFactory<solver_t> factory ("ipopt", pb);
   solver_t& solver = factory ();
 
   // Compute the minimum and retrieve the result.
